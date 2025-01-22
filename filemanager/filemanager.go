@@ -6,6 +6,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"time"
 )
 
 type FileManager struct {
@@ -62,6 +63,7 @@ func (fm FileManager) WriteResult(data interface{}) error {
 	if err != nil {
 		return errors.New(fmt.Sprintf("Error creating file: %v", err))
 	}
+	time.Sleep(3 * time.Second)
 
 	err = json.NewEncoder(file).Encode(data)
 	if err != nil {
